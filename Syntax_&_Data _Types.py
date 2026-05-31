@@ -24,7 +24,7 @@ print(fruits_replaced)
 print(fruits.find('b'))
 
 """Integers"""
-"""converstion between different number systems"""
+"""conversion between different number systems"""
 binary = 0b01111
 octal = 0o17
 hexadeciaml = 0xf
