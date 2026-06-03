@@ -33,3 +33,35 @@ c = my_tuple_2.index(16)  # returns the index of an int otherwise error
 print(c)
 
 """Dictionaries"""
+my_dict = {'Name':'Riyyan', 'RollNo.':29398}    # manually creating a dict
+my_dict_1 = {x : x**2 for x in range(1,11)} # creates a dict using dict comprehension
+print(my_dict, my_dict_1,sep=' ---- ')
+dict_copy = my_dict.copy()  # creates a copy
+print(id(dict_copy))    # both copy and original have different memory addresses
+print(id(my_dict))
+
+dict_copy.update(my_dict_1) # adds another dict to dict copy
+print(dict_copy)
+# if you have same key in different dicts and you add them together then the 
+# latter one would overwrite the value of previous dict's key
+
+print(dict_copy.get('Name'))    # returns the value of a specific key in the dict
+print(dict_copy.keys()) # returns all the keys present in the dict
+print(dict_copy.values())   # returns all the values present in the dict
+print(dict_copy.items())    # returns all the key value pairs as a list of tuples
+del dict_copy['Name']   # del statement deletes a specific key value pair
+print(dict_copy)
+dict_copy.clear()   # deletes everything inside a dictionary
+print(dict_copy)
+
+"""Sets"""
+set1 = {1,2,3,4,5}  # manually creating a set
+set2 = {pow(x,2) for x in range(1,11)}  # using set comprehension to create a set that contains square of numbers
+print(set1, set2)
+# sets are unordered collection that does not allow duplicate values
+# example of turning a list into a set
+list1 = [1,2,3,4,3,2,1] # contains duplicate values
+set1 = set(list1)   #eleminates duplicate values
+print(set1)
+
+

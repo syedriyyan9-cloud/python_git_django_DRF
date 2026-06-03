@@ -14,6 +14,8 @@ A basic project to practice what i have learned so far
 
 """
 
+import sys
+
 # create functions for adding, viewing, GPA calculations and displaying
 
 # so what info relating to student do we need:
@@ -63,15 +65,38 @@ def add_student() -> dict:
     # student_info['credit_hours'] = subject_credit_hours
     return student_info
 
-def view_students():
-    pass
+# displays the students info
+def view_students(dictionary) -> None:
+    """Displays all the students records, Returns None"""
+    for key, value in dictionary.items():
+        print(f'{key}: {value}')
 
 def calculate_gpa():
     pass
 
 def display():
-    pass
+    counter = 1
+    all_students = {}
+    print("Enter number of option you want to pick")
+    while True:
+        print('-----------------------------')
+        print("1. Add Student")
+        print("2. View All Students")
+        print("3. Calculate Student GPA")
+        print("4. Exit")
+        choice = int(input())
+        match choice:
+            case 1:
+                all_students[counter] = add_student()
+                counter += 1
+            case 2:
+                view_students(all_students)
+            case 3:
+
+                break
+            case 4:
+                sys.exit()
 
 
 if __name__ =='__main__':
-    print(add_student())
+    display()
