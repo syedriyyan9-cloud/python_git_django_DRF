@@ -72,7 +72,11 @@ def view_students(dictionary) -> None:
         print(f'{key}: {value}')
 
 def calculate_gpa():
-    pass
+    """Returns Calculated Gpa of the student"""
+    # get the student by name or by roll number
+    # then get that student's subjects
+    # then calculate GPA 
+    # then return it.
 
 def display():
     counter = 1
