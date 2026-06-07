@@ -27,7 +27,7 @@ class Subject:
                 input('Enter Subject credit hours: '))
             self.subject_grade_point.append(
                 input('Enter Grade Point(A,B,C...): '))
-            choice = input('Add more subjects? press \'n\' for no')
+            choice = input('Add more subjects? press \'n\' for no: ')
             if choice.lower() == 'n':
                 break
 
