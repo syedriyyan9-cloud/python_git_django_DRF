@@ -24,7 +24,7 @@ class Subject:
         while True:
             self.subject_name.append(input('Enter Subject name: '))
             self.subject_credit_hour.append(
-                input('Enter Subject credit hours: '))
+                int(input('Enter Subject credit hours: ')))
             self.subject_grade_point.append(
                 input('Enter Grade Point(A,B,C...): '))
             choice = input('Add more subjects? press \'n\' for no: ')

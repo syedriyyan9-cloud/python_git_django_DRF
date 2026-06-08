@@ -49,7 +49,18 @@ def display() -> None:
                     print("Student's Grade Points: "
                           f"{value.subject.subject_grade_point}")
             case 4:
-                pass
+                user_input = int(input("Enter student's roll number: "))
+                student = student_record.get(user_input, None)
+                total_quality_point = 0
+                # calculate gpa
+                student_grade = student.subject.subject_grade_point
+                student_credit_hour = student.subject.subject_credit_hour
+                for index, grade in enumerate(student_grade):
+                    grade_point = grade_points.get(grade.upper(), None)
+                    credit_hour = student_credit_hour[index]
+                    total_quality_point += grade_point * credit_hour
+                gpa = total_quality_point/sum(student_credit_hour)
+                print(f"Student's GPA is: {gpa}")
             case 5:
                 print("Thank You for Using Grading System.")
                 sys.exit()
