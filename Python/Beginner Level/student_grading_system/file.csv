@@ -1,0 +1,3 @@
+Name,Roll Number,Subjects,,Credit hours,,Grade points,
+riyyan,29398, ['maths', 'physics'], [3, 2], ['a', 'b']
+kamran, 29398, ['maths', 'physics'], [3, 3], ['b', 'a']

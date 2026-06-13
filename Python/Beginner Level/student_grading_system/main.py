@@ -10,6 +10,7 @@ so different module for classes and a main file for running the project
 
 from classes import Record
 import sys
+import csv
 
 def user_choice(s: str) -> int:
     """takes user input and returns it in int"""
@@ -59,10 +60,28 @@ def given_choices() -> None:
     print("---------------------------")
     return None    
 
+def store_record(d: dict) -> None:
+    """Saves a record to a file. Returns none"""
+    # file_path = 'file.txt'
+    file_path = 'file.csv'
+    with open(file_path, 'a', encoding='utf-8', newline='') as file:
+        file.write(d)
+        
+def load_records():
+    """Loads the records saved in file"""
+    student_record = {}
+    # file_path = 'file.txt'
+    file_path = 'file.csv'
+    with open(file_path, 'r', encoding='utf-8', newline='') as file:
+        pass
+            
+
+
 def display() -> None:
     """Displays info related to student. return None"""
     student_record = {}
     print("Welcome to student grading system")
+    #load saved student records
     while True:
         given_choices()
         user_input = user_choice("Enter your Choice: ")
@@ -70,6 +89,10 @@ def display() -> None:
             case 1: 
                 student = Record()
                 student_record[student.student.roll_num] = student
+                store_record(f"{student.student.name}, {student.student.roll_num}, " 
+                             f"{student.subject.subject_name}, " 
+                             f"{student.subject.subject_credit_hour}, "
+                             f"{student.subject.subject_grade_point}")
             case 2:
                 user_input = user_choice("Enter student's roll number: ")
                 student = student_record.get(user_input, "Student not found")
