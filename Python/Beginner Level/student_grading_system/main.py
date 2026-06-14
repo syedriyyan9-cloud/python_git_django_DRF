@@ -11,6 +11,7 @@ so different module for classes and a main file for running the project
 from classes import Record
 import sys
 import csv
+import ast
 
 def user_choice(s: str) -> int:
     """takes user input and returns it in int"""
@@ -60,26 +61,54 @@ def given_choices() -> None:
     print("---------------------------")
     return None    
 
-def store_record(d: dict) -> None:
+def store_record(file_path, student: Record) -> None:
     """Saves a record to a file. Returns none"""
-    # file_path = 'file.txt'
-    file_path = 'file.csv'
-    with open(file_path, 'a', encoding='utf-8', newline='') as file:
-        file.write(d)
+    if file_path.endswith('.csv'):
+        with open(file_path, 'a', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerow([
+                student.student.name,
+                student.student.roll_num,
+                str(student.subject.subject_name),
+                str(student.subject.subject_credit_hour),
+                str(student.subject.subject_grade_point)
+            ])
+    else:
+        with open(file_path, 'a', encoding='utf-8') as file:
+            file.write(
+                f"'{student.student.name}', {student.student.roll_num}, " 
+                f"{student.subject.subject_name}, " 
+                f"{student.subject.subject_credit_hour}, "
+                f"{student.subject.subject_grade_point}"
+            )
         
-def load_records():
-    """Loads the records saved in file"""
+def load_records(file_path) -> dict:
+    """Loads the records saved in file. Returns a dict"""
     student_record = {}
-    # file_path = 'file.txt'
-    file_path = 'file.csv'
-    with open(file_path, 'r', encoding='utf-8', newline='') as file:
-        pass
-            
-
+    if file_path.endswith('.csv'):
+        with open(file_path, 'r', newline='', encoding='utf-8') as file:
+            reader = csv.reader(file)
+            for row in reader:
+                name = row[0]
+                roll = int(row[1])
+                subjects = ast.literal_eval(row[2])
+                credit_hour = ast.literal_eval(row[3])
+                grade_point = ast.literal_eval(row[4])
+                student = Record(name,roll,subjects,credit_hour,grade_point)
+                student_record[roll] = student
+    else:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            for line in file:
+                data = ast.literal_eval(line.strip())
+                name, rollnum, subjects, credit_hours, grades = data
+                student = Record(name, rollnum, subjects, credit_hours,grades)
+                student_record[rollnum] = student
+    return student_record
 
 def display() -> None:
     """Displays info related to student. return None"""
-    student_record = {}
+    file_path = "file.csv"
+    student_record = load_records(file_path)
     print("Welcome to student grading system")
     #load saved student records
     while True:
@@ -89,14 +118,15 @@ def display() -> None:
             case 1: 
                 student = Record()
                 student_record[student.student.roll_num] = student
-                store_record(f"{student.student.name}, {student.student.roll_num}, " 
-                             f"{student.subject.subject_name}, " 
-                             f"{student.subject.subject_credit_hour}, "
-                             f"{student.subject.subject_grade_point}")
+                store_record(file_path, student)
             case 2:
                 user_input = user_choice("Enter student's roll number: ")
-                student = student_record.get(user_input, "Student not found")
-                view_student_records(student)
+                student = student_record.get(user_input)
+                if student is None:
+                    print("Student not found")
+                    print("---------------------------")
+                else:
+                    view_student_records(student)
             case 3:
                 print(f"All Student Record: ")
                 for value in student_record.values():

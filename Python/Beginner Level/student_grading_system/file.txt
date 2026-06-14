@@ -1,1 +1,1 @@
-riyyan, 29398, ['mahts', 'physics'], [3, 2], ['a', 'b']
+'riyyan', 29398, ['maths', 'physcis'], [3, 2], ['a', 'b']
