@@ -33,10 +33,33 @@ print(my_math.multiply(3, 4))    # 12
 """
 Exploring __name__ == "__main__" block
 """
-
+# present in files of demo.ppy and importer.py
 
 
 
 """
-
+PYTHONPATH
 """
+
+import sys
+
+# See where Python looks for modules
+print("Search paths:")
+for i, path in enumerate(sys.path):
+    print(f"{i}: {path}")
+
+# Let's say you have a module at /my_libs/helper.py
+# Method 1: Set PYTHONPATH before running script
+# export PYTHONPATH="/my_libs:$PYTHONPATH"
+
+# Method 2: Modify sys.path at runtime
+custom_path = "/my_libs"
+if custom_path not in sys.path:
+    sys.path.insert(0, custom_path)
+
+# Now you can import from that location
+try:
+    # import helper
+    print("Module found!")
+except ImportError:
+    print("Module not found. Check your PYTHONPATH.")
