@@ -50,3 +50,29 @@ print(values)
 asending_order = sorted(values)
 print(asending_order)
 #---------------------------------------------------------------
+# any in python
+# evaluates if an iterable has one true value, if it does returns true else false
+# opposite of all
+# is lazy so we can use large amount of data in it for efficiency
+# is better than explicit loops as it short circuits the process to find truthy value
+# example
+is_odd = any(x % 2 != 0 for x in range(0,12, 2))
+# we would get [0,2,4,6,8,10] which are all even, iterable does not contain odd numbers
+print(is_odd)
+# better to use with generators as using it with lists mean that memory is occupied by list
+# so efficieny does not give full benefit
+#---------------------------------------------------------------
+# all in python
+# opposite of any
+# returns true if all values in the iterable are true else false
+# best used with generators for lazy evaluation of large amounts of data
+# example
+is_even = all(x % 2 == 0 for x in range(0,13,2))
+# condition is satisfied as all the numbers generated are even
+# print(is_even)
+# if even one number was odd it would have returned false example
+is_even = all(x % 2 == 0 for x in range(0,3))
+# the iterable would contain values of 0,1,2 where only one value is odd 
+# and does not satisfy the condition hence it will return false
+print(is_even)
+#---------------------------------------------------------------
