@@ -76,3 +76,27 @@ is_even = all(x % 2 == 0 for x in range(0,3))
 # and does not satisfy the condition hence it will return false
 print(is_even)
 #---------------------------------------------------------------
+# enumerate in python
+# returns the index along with the tuple (item) when used on an iterable, returns a lazy obj
+# when used on dicts it will only provide with index and keys not key value pairs
+# if you want key value pairs using enumerate then use dict.items() with enumerate
+# does not modify any original data
+# has a start parameter which can be used to change the index number which starts with 0 by default
+# example
+list1 = [x for x in range(1,11)]    # a list of numbers from 1 to 10
+for index, item in enumerate(list1, start=1):
+    print(f"{index}: {item}")
+dict1 = {k:v**2 for k, v in zip(range(1,11),range(1,11))}   # a dict containing squares of keys (numbers from 1 to 10)
+for index, (key, value) in enumerate(dict1.items()):
+    print(f"{index}: key = {key}, value = {value}")
+#---------------------------------------------------------------
+# reversed in python
+# returns a lazy obj that contains a reversed version of a sequence type
+# remember it only takes 1 parameter and it must be a sequence type
+# does not work with non sequence type like sets
+# works with dict however only reverses the keys in a dict
+# does not modify any data in the original sequence
+# example
+for i in reversed(range(1,11)):
+    print(i)
+#---------------------------------------------------------------
