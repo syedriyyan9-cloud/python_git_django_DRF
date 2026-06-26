@@ -100,3 +100,27 @@ for index, (key, value) in enumerate(dict1.items()):
 for i in reversed(range(1,11)):
     print(i)
 #---------------------------------------------------------------
+# min in python
+# returns the smallest value from an iterable or from multiple arguments
+# if you pass an empty iterable then value error will occur
+# to avoid this error use default parameter 
+# key parameter in min takes in a function that allows you to customize you comaparsion
+# example
+list1 = [43,23,124,342,34,23,42,32,362]
+print(min(list1))
+list1 = []
+print(min(list1, default=19))
+list1 = ["asdf","ASdfa","rwerw","WR"]
+print(min(list1, key=len))
+# you can also use them with generators to increase efficiency when working with huge amount of data
+print(min([x for x in range(600,700)]))
+# it has a time complexity of O(n)
+#---------------------------------------------------------------
+# max in python
+# returns the largest value from the iterable or from multiple arguments
+# also has a default and key parameter for same purpose as used for min
+# time complexity is also O(n)
+# example
+print(max(list1, key=len))
+
+#---------------------------------------------------------------
