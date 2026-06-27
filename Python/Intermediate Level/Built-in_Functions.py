@@ -122,5 +122,32 @@ print(min([x for x in range(600,700)]))
 # time complexity is also O(n)
 # example
 print(max(list1, key=len))
-
+#---------------------------------------------------------------
+# sum in python
+# returns the total of values present in an iterable
+# has two parameters, 1 is iterable and 2nd is start, which takes in a value that should be added to the total before function executes
+# ensure that iterable contains integers or floats as non-numeric types would give error
+# also works with list of lists, it flattens it to a single list but start should be given argument of empty list [] 
+# is implemented in C so it is extremely fast on built in datatypes
+# example
+list1 = [x for x in range(1,11)]
+total = sum(list1)
+print(total)
+# example on list of lists
+list1 = [[1,2,3],[4,5,6],[7,8,9]]
+total = sum(list1, start=[])    # flattens the list
+print(total)
+#---------------------------------------------------------------
+# len in python
+# returns the number of elements present in an iterable
+# works with objects that has __len__() method defined
+# has time complexity of O(1) for built in datatypes
+# cannot be used with generator objects
+# example
+list2 = [x for x in range(1,11)]
+list2_len = len(list2)
+print(list2_len)
+# if there is a list of lists then the returned value is number of lists present in the list, not the total number of elements present in every list
+list1_len = len(list1)
+print(list1_len)
 #---------------------------------------------------------------
