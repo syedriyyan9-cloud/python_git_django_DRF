@@ -151,3 +151,30 @@ print(list2_len)
 list1_len = len(list1)
 print(list1_len)
 #---------------------------------------------------------------
+# type function in python
+# returns the datatype of the object that is passes as an argument
+# it is also used to create classes dynamically, but that is an advanced feature
+# do not use it for type checking as another function, isinstance, is used for that
+# helps in debugging
+# example:
+print(type('a'))
+print(type(32423))
+print(type(True))
+# can be used for checking the type of custom objects
+#---------------------------------------------------------------
+# isinstance function in python
+# takes two arguments, first is the obj and other is its preffered datatype 
+# then returns True if the obj is of the given datatype else false
+# is used for type checking 
+# also used for debugging and for validating inputs in a function
+# example:
+print(isinstance(3123,int))
+print(isinstance("riyan",str))
+print(isinstance([],list))
+print(isinstance(True, bool))
+# some examples where result would be false
+print(isinstance(12321, str))
+print(isinstance(12321, bool))
+print(isinstance(12321, tuple))
+print(isinstance(12321, list))
+#---------------------------------------------------------------
