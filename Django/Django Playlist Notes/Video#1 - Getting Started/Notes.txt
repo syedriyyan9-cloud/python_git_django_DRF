@@ -1,0 +1,34 @@
+Project Overview: 
+
+The series focuses on building a blog-style application where users can create, update, and delete posts. 
+It includes features like a user authentication system (login, logout, registration), password resets via email, and the ability for users to update their profile pictures, which are automatically resized.
+Django Admin: Django provides a built-in Admin page with a graphical user interface (GUI) that allows those with correct permissions to view and update back-end information easily.
+
+Installation and Setup:
+
+It is recommended to use virtual environments to keep projects separate.
+Django is installed using the command pip install Django.
+To verify the installation and check the version, use the command python -m django --version.
+The tutorial uses Django 2.1 and Python 3.7; Python 3.6 or higher is required for certain features like f-strings.
+
+Creating a New Project:
+
+To start a project, use the command django-admin startproject <project_name>.
+Note that project names can use underscores but not dashes.
+Project Structure: Running the start project command creates several key files:
+manage.py: A file used to run various command-line commands for the project.
+settings.py: Contains configurations like security keys, database settings, and a list of installed apps.
+urls.py: Maps specific URL addresses to the correct parts of the application.
+wsgi.py: Helps the Python application communicate with the web server.
+__init__.py: An empty file that tells Python the directory is a package.
+
+Running the Server:
+
+You can start the default web server by running python manage.py runserver in your terminal.
+The website can then be viewed in a browser at http://127.0.0.1:8000/ or localhost:8000.
+Django provides a default "success" page immediately, even before you write any custom code.
+
+Navigating the Site:
+
+The Admin route is available by default at /admin, which leads to a login screen.
+To stop the server, use Ctrl + C in the terminal.

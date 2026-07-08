@@ -1,0 +1,43 @@
+Difference Between a Project and an App: 
+
+A Django project is the entire website, while an app is a specific section or feature (like a blog or a store).
+A single project can have many apps, and apps can be reused in different projects.
+
+Creating a New App: 
+
+To create an app, you use the command python manage.py startapp <name> (e.g., python manage.py startapp blog).
+This creates a new folder with its own set of files.
+
+Creating Views: 
+
+Views are functions that handle the logic for what a user sees on a page.
+In the views.py file, you create a function (like home or about) that takes a request argument.
+The function returns an HttpResponse, which can include HTML tags like <h1>.
+
+Mapping URLs (App Level): 
+
+You need to tell Django which URL leads to which view.
+You create a new urls.py file inside your app folder.
+You import the path function and your app's views.
+You define urlpatterns, where you map a path (like 'about/') to a specific view function (like views.about).
+Giving each path a name (like blog-home) is helpful for looking up routes later without causing confusion with other apps.
+
+Connecting App URLs to the Project: 
+
+The main project needs to know about the app's URLs.
+In the main project’s urls.py, you import the include function.
+You add a path that "includes" the app's URL file (e.g., path('blog/', include('blog.urls'))).
+
+How URL Routing Works: 
+When a user visits a URL, Django looks at the project-level URLs first.
+It matches the first part (like blog/), "chops it off," and sends the rest of the URL to the app's URL file for more processing.
+
+Routing Tips and Tricks:
+
+Trailing Slashes: It is best practice to include a forward slash at the end of URLs (like blog/).
+Django will automatically redirect users to the correct page even if they forget to type the slash.
+Changing Routes: Because of the way Django "chops off" parts of the URL, you can change the main route for an entire app in just one place in the project's urls.py.
+
+Setting a Home Page: 
+
+To make an app the home page for the entire website, you can leave the path string empty ('') in the project-level URL settings.
