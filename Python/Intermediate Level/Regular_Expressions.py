@@ -41,3 +41,21 @@ for match in matches:
     print(match)
 
 print("---------------------------------------------")
+
+sentence = "Start of this sentence is from the first word."
+# there are flags in re module that can be used to make coding easy
+# one in IGNORECASE flat that ignores if the letters are upper case or lower case
+pattern = re.compile(r"start", re.IGNORECASE)
+
+# search method searches for the pattern in the entire text.
+# if it exists then it returns its first instance where it is found else returns none
+matches = re.search(pattern,sentence)
+print(matches)
+
+# match method searches for a pattern at the start of the text
+# returns if found else returns none
+matches = re.match("Start",sentence)
+print(matches)
+
+# findall returns a list of all the matched patterns, returns the first group if found, returns a list else none
+# finditer returns the match object found based on the pattern given else none
