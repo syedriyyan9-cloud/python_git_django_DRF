@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% for post in posts %}
+    {% if post.author != 'riyyan' %}
+        <h1>{{post.title}}</h1>
+        <h2>{{post.content}}</h2>
+        <p>{{post.author}} on {{post.date_posted}}</p>
+    {% endif %}
+    {% endfor %}
+{% endblock content %}

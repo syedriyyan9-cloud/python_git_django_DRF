@@ -1,0 +1,42 @@
+Template Folder Structure:
+
+Django looks for a subdirectory called templates in each app.
+The recommended convention is to create another folder inside templates with the same name as the app (e.g., blog/templates/blog/) to avoid confusion if multiple apps have templates with the same name.
+
+Initial Setup:
+
+To make Django search for these templates, you must add your app to the INSTALLED_APPS list in the project's settings.py file.
+Specifically, you add the path to the app configuration class found in apps.py (e.g., 'blog.apps.BlogConfig').
+
+The Render Function:
+
+Instead of returning a simple HttpResponse from your views, you use the render() shortcut.
+This function takes the request object and the name of the template (e.g., 'blog/home.html') as arguments.
+
+Passing Data (Context):
+
+You can pass information from your Python views to your HTML templates using a context dictionary.
+The keys in this dictionary become variables that you can access directly inside the template.
+
+Django Template Language:
+
+Variables: Displayed using double curly braces, like {{ post.title }}.
+Logic: Uses curly braces with percent signs, like {% for post in posts %} or {% if title %}.
+Closing Tags: Unlike Python, you must explicitly end logic blocks with tags like {% endfor %} or {% endif %}.
+
+Template Inheritance:
+
+This allows you to create a base.html file for parts of the site that stay the same (like headers and navigation bars) to avoid repeating code.
+The base file uses blocks ({% block content %}) that child templates can override.
+Child templates use the {% extends ... %} tag at the very top to inherit from the base file.
+
+Styling and Static Files:
+
+The tutorial demonstrates adding Bootstrap to the base.html file to instantly style the entire site.
+Custom CSS files are stored in a static directory within the app.
+To use these, you use {% load static %} at the top of the template and the {% static ... %} tag to link the file.
+
+Dynamic URL Links:
+
+Instead of hard-coding links (like /about), use the {% url %} tag followed by the name you gave the route in urls.py (e.g., {% url 'blog-home' %}).
+This ensures that if you ever change the URL path in your settings, all the links on your website will update automatically.
