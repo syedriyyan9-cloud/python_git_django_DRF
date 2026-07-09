@@ -1,0 +1,5 @@
+2026-07-10 02:12:32,377 - root - INFO - Program started
+2026-07-10 02:12:32,378 - root - DEBUG - Dividing 10 by 0
+2026-07-10 02:12:32,379 - root - ERROR - Attempted division by zero!
+2026-07-10 02:12:32,379 - root - INFO - Result: None
+2026-07-10 02:12:32,379 - root - WARNING - This is a warning message
