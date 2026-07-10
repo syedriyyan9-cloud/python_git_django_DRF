@@ -1,0 +1,4 @@
+Django/Django Practice Using Playlist/venv/
+Django/Django Practice Using Playlist/db.SQLITE3
+Django/Django Practice Using Playlist/db.sqlite3
+.gitignore
