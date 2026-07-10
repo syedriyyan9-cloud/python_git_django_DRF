@@ -4,7 +4,7 @@
     {% if post.author != 'riyyan' %}
         <h1>{{post.title}}</h1>
         <h2>{{post.content}}</h2>
-        <p>{{post.author}} on {{post.date_posted}}</p>
+        <p>{{post.author}} on {{post.date_posted | date:"F d, Y"}}</p>
     {% endif %}
     {% endfor %}
 {% endblock content %}
