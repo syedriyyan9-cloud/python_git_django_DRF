@@ -1,0 +1,4 @@
+Verification Project: Build a weather CLI tool that takes a city name,
+fetches data from a public API (e.g., OpenWeatherMap), parses JSON, 
+and displays formatted output with error handling for invalid cities or 
+network failures. 
