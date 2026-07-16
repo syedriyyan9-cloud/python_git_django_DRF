@@ -1,5 +1,6 @@
 {% extends 'blog/base.html' %}
-
 {% block content %}
-<p>Welcome riyyan</p>
+<img src="{{ user.Profile.image.url }}" alt="">
+<p>Welcome {{user.username}}</p>
+<p>Welcome {{user.email}}</p>
 {% endblock %}
