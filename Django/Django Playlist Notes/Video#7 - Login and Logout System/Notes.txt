@@ -1,0 +1,38 @@
+Using Django's Built-in Views:
+
+Instead of writing a login system from scratch, you can use Django’s LoginView and LogoutView.
+These are class-based views that handle the background logic and form processing for you.
+You import these into your project's urls.py file from django.contrib.auth.
+
+Setting Up Templates:
+
+While Django handles the logic, you must create the HTML templates to match your website's style.
+You tell the views where to find these files by passing a template_name argument (for example, users/login.html) in your URL patterns.
+The login template can reuse the same styles and "crispy forms" used for the registration page.
+
+Managing Redirects:
+
+By default, Django tries to send users to a profile page after they log in.
+To change this, you can add LOGIN_REDIRECT_URL to your settings.py file to send users to the home page instead.
+The tutorial also updates the registration view so that users are redirected to the login page immediately after creating an account.
+
+Dynamic Navigation Bar:
+
+You can use a conditional statement (if user.is_authenticated) in your base template to change what users see.
+If a user is logged in, the navigation bar shows links for "Profile" and "Logout".
+If they are logged out, it shows "Login" and "Register" instead.
+
+Restricting Page Access:
+
+To protect certain pages (like a user's profile), you use the @login_required decorator above the view function.
+This decorator automatically checks if a user is signed in before letting them see the page.
+
+The "Next" Parameter:
+
+If a user tries to visit a restricted page while logged out, Django redirects them to the login page.
+It uses a "next" parameter in the URL to remember where the user was trying to go.
+Once the user logs in successfully, Django automatically sends them straight to that original page.
+
+Configuring the Login URL:
+
+You must define LOGIN_URL in your settings.py file so that Django knows exactly where your login page is located when redirecting unauthorized users.

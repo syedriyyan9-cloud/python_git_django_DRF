@@ -1,0 +1,31 @@
+Creating Update Forms:
+
+The tutorial uses Model Forms, which are special forms that link directly to database models.
+UserUpdateForm: This allows users to change their username and email.
+ProfileUpdateForm: This allows users to update their profile picture (image field).
+
+Updating the Profile View:
+
+To make the forms useful, the view must be updated to handle POST requests when a user submits changes.
+The forms are populated with the current user's information by passing the instance of the user and their profile. This ensures the fields are not empty when the page loads.
+For the profile picture to upload correctly, the view must specifically handle request.FILES.
+
+Template and Security:
+
+The two separate forms (User and Profile) are combined into one HTML form on the profile page so the user sees it as a single update section.
+Crucial Step: You must add enctype="multipart/form-data" to the HTML form tag. Without this, the image data will not be saved correctly.
+
+Saving and Redirecting:
+
+The application checks if both forms are valid before saving the data to the database.
+After a successful update, the user is redirected back to the profile page. This prevents a common browser error where a page refresh might try to resubmit the form data again.
+
+Automatic Image Resizing:
+
+To prevent large, high-resolution photos from slowing down the website, the save() method in the Profile model is overridden.
+Using the Pillow library, the code checks if an uploaded image is larger than 300 pixels. If it is, the system automatically resizes it down before saving it to the file system.
+
+Displaying Photos on the Home Page:
+
+The tutorial concludes by adding the author's profile picture next to each blog post on the home page.
+This is done by accessing the image URL through the relationship between the post, the author, and their profile (post.author.profile.image.url).

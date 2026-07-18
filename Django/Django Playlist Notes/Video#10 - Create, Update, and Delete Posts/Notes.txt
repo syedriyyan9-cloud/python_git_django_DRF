@@ -1,0 +1,48 @@
+Introduction to Class-Based Views (CBVs):
+
+While previous videos used function-based views, Django also offers class-based views.
+CBVs have a lot of built-in functionality to handle common tasks like listing objects, showing details, or creating forms.
+
+The List View (Home Page):
+
+The ListView is used to display a list of all blog posts on the home page.
+To use it, you simply tell the class which model to query (e.g., Post).
+You can set the ordering of posts so that the newest ones appear at the top (e.g., ordering = ['-date_posted']).
+
+The Detail View (Individual Posts):
+
+The DetailView creates a page for a single blog post.
+The URL for this view requires a Primary Key (PK) or ID so Django knows which specific post to show (e.g., post/1/).
+
+The Create View (New Posts):
+
+The CreateView provides a form for users to write and submit new blog posts.
+You must specify which fields (like title and content) should appear in the form.
+To save the post correctly, you must override the form_valid method to automatically set the author as the currently logged-in user.
+
+Handling Redirects:
+
+After a post is created, Django needs to know where to send the user.
+By adding a get_absolute_url method to your Post model, you can tell Django to automatically redirect the user to the specific page of the post they just finished writing.
+
+The Update View (Editing Posts):
+
+The UpdateView allows users to edit posts they have already written.
+It uses the same form template as the CreateView but fills it with the existing data from that post.
+
+The Delete View (Removing Posts):
+
+The DeleteView allows users to remove a post.
+It usually directs users to a confirmation page to ask "Are you sure?" before the post is permanently deleted.
+Because the post will no longer exist after deletion, you must provide a success_url (like the home page) for the user to land on afterwards.
+
+Security with Mixins:
+
+To protect these views, the tutorial uses Mixins (which are like decorators for classes).
+LoginRequiredMixin: Ensures only logged-in users can create, update, or delete posts.
+UserPassesTestMixin: Ensures that only the original author of a post has permission to update or delete it.
+
+Updating the User Interface:
+
+A "New Post" link is added to the navigation bar so users can easily reach the creation form.
+"Update" and "Delete" buttons are added to the post detail pages, but they are only visible if the person viewing the page is the one who wrote the post.

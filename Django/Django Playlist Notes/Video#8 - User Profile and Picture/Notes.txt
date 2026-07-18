@@ -1,0 +1,15 @@
+Extending the User Model: 
+
+The video demonstrates how to add more fields to the default Django user system by creating a separate model that links back to the original user.
+
+Profile Picture Uploads: 
+
+A major addition is the functionality that allows users to upload their own profile pictures to the website.
+
+Django Signals: 
+
+The tutorial introduces signals, which are used to trigger specific functions automatically when certain actions occur in the application (such as automatically creating a profile for a user as soon as they register).
+
+Improving the Profile Page: 
+
+The overall goal of these steps is to continue building out and refining the user profile page to make it more interactive and feature-rich.
